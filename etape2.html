@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Chasse au Trésor - Discord</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1>NIVEAU 2</h1>
+		<h2>EN tant qu'IA G.L.I.T.C.H. Je vais compliquer ce jeu. bon courage pour réussir cette énigme.</h2>
+        <p class="question">
+			Je suis le point de convergence où les réseaux s'entrelacent et où les destins se lient.<br> Cœur d’une connexion ou centre d’un système, je suis le nœud vital qui unit les mondes. Les réplicants me cherchent, et les données me traversent. <br> Qui suis-je ?
+        </p>
+        <input type="text" id="reponseUser" placeholder="Votre réponse..." autocomplete="off">
+        <br>
+        <button onclick="verifierReponse()">Valider</button>
+        
+        <p id="msgErreur" class="error">ACCÈS REFUSÉ</p>
+    </div>
+
+    <script>
+        function verifierReponse() {
+            var saisie = document.getElementById("reponseUser").value;
+            saisie = saisie.toUpperCase().trim();
+            var bonneReponse = "NEXUS"; 
+            var pageSuivante = "etape3.html"; 
+
+            if (saisie === bonneReponse) {
+                window.location.href = pageSuivante;
+            } else {
+                document.getElementById("msgErreur").style.display = "block";
+            }
+        }
+        document.getElementById("reponseUser").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                verifierReponse();
+            }
+        });
+    </script>
+</body>
+</html>
