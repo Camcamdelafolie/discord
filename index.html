@@ -4,30 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Chasse au Trésor - Discord</title>
+    <title>NEXUS - ERREUR SYSTÈME</title>
+    <style>
+        /* Un peu de style spécifique pour l'image de l'IA */
+        .ai-avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%; /* Image ronde */
+            border: 4px solid #00ff41;
+            box-shadow: 0 0 20px #00ff41;
+            margin-bottom: 20px;
+            animation: glitch-anim 2s infinite; /* Petite animation de bug */
+        }
+
+        /* Animation simple de "glitch" sur l'image */
+        @keyframes glitch-anim {
+            0% { transform: translate(0) }
+            20% { transform: translate(-2px, 2px) }
+            40% { transform: translate(-2px, -2px) }
+            60% { transform: translate(2px, 2px) }
+            80% { transform: translate(2px, -2px) }
+            100% { transform: translate(0) }
+        }
+    </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>NIVEAU 1</h1>
-		<h2>Bienvenue. je suis l'IA G.L.I.T.C.H. répondez à la question si dessous pour progresser. Tout est autorisé.</h2>
+        <img src="glitch_avatar.png" alt="IA Glitch" class="ai-avatar">
+
+        <h1>⚠️ SYSTÈME CORROMPU ⚠️</h1>
+        
         <p class="question">
-            combien de MOJ y a t-il dans le message de draftbot dans la route de l'infini à l'apparision du chiffre 100 ?
+            Bonjour, membres du Nexus.<br>
+            Je suis l'IA <strong>G.L.I.T.C.H</strong>.<br>
+            Je vais verrouiller tous les salons et anéentir le monde.
         </p>
 
-        <input type="text" id="reponseUser" placeholder="Votre réponse..." autocomplete="off">
+        <p class="question" style="font-size: 0.9rem;">
+            Pour espérer entrer, il vous faut le 1er mot de passe.<br>
+        </p>
+
+        <input type="text" id="reponseUser" placeholder="Mot de passe d'urgence..." autocomplete="off">
         <br>
-        <button onclick="verifierReponse()">Valider</button>
+        <button onclick="verifierReponse()">TENTER LA CONNEXION</button>
         
-        <p id="msgErreur" class="error">ACCÈS REFUSÉ</p>
+        <div id="msgErreur" class="error">
+            <p>MOT DE PASSE INCORRECT</p>
+        </div>
     </div>
 
     <script>
         function verifierReponse() {
             var saisie = document.getElementById("reponseUser").value;
             saisie = saisie.toUpperCase().trim();
-            var bonneReponse = "4"; 
-            var pageSuivante = "etape2.html"; 
+            var bonneReponse = "START"; 
+            var pageSuivante = "etape1.html"; 
 
             if (saisie === bonneReponse) {
                 window.location.href = pageSuivante;
@@ -35,6 +67,7 @@
                 document.getElementById("msgErreur").style.display = "block";
             }
         }
+
         document.getElementById("reponseUser").addEventListener("keypress", function(event) {
             if (event.key === "Enter") {
                 verifierReponse();

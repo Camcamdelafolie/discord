@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Chasse au Trésor - Discord</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1>NIVEAU 3</h1>
+		<h2>ok bien joué. Mais maintenant on va tester ta connaissance de code espion, HA HA HA HA (rire diabolique)</h2>
+        <p class="question">
+			voici le mot de passe <br> −·−· ·− −− −·−· ·− −−  <br> entrez le mot de passe converti :
+        </p>
+        <input type="text" id="reponseUser" placeholder="Votre réponse..." autocomplete="off">
+        <br>
+        <button onclick="verifierReponse()">Valider</button>
+		
+        <<div id="msgErreur" class="error">
+		<p>ACCÈS REFUSÉ</p>
+		<a href="https://fr.wikipedia.org/wiki/Code_Morse_international"  font-size: 0.8rem;">
+        Besoin d'aide ?
+		</a>
+	</div>
+
+    <script>
+        function verifierReponse() {
+            var saisie = document.getElementById("reponseUser").value;
+            saisie = saisie.toUpperCase().trim();
+            var bonneReponse = "CAMCAM"; 
+            var pageSuivante = "etape4.html"; 
+
+            if (saisie === bonneReponse) {
+                window.location.href = pageSuivante;
+            } else {
+                document.getElementById("msgErreur").style.display = "block";
+            }
+        }
+        document.getElementById("reponseUser").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                verifierReponse();
+            }
+        });
+    </script>
+</body>
+</html>

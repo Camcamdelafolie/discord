@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Chasse au Trésor - Discord</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1>NIVEAU 1</h1>
+		<h2>ok, on t'a donné le mot de passe. Mantenant à toi de te débrouiller !!</h2>
+        <p class="question">
+            combien de MOJ y a t-il dans le message de draftbot dans la route de l'infini à l'apparision du chiffre 100 ?
+        </p>
+
+        <input type="text" id="reponseUser" placeholder="Votre réponse..." autocomplete="off">
+        <br>
+        <button onclick="verifierReponse()">Valider</button>
+        
+        <p id="msgErreur" class="error">ACCÈS REFUSÉ</p>
+    </div>
+
+    <script>
+        function verifierReponse() {
+            var saisie = document.getElementById("reponseUser").value;
+            saisie = saisie.toUpperCase().trim();
+            var bonneReponse = "4"; 
+            var pageSuivante = "etape2.html"; 
+
+            if (saisie === bonneReponse) {
+                window.location.href = pageSuivante;
+            } else {
+                document.getElementById("msgErreur").style.display = "block";
+            }
+        }
+        document.getElementById("reponseUser").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                verifierReponse();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Chasse au Trésor - Discord</title>
+    <style>
+        .hidden { display: none; }
+
+        #btnIndice {
+            background-color: #f0ad4e; /* Orange */
+            color: black;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>NIVEAU 6</h1>
+        <h2>NON !!! ça suffit ! je ne te laisserait pas atteindre la fin ! cette fois ci, tu va pas réussir !!</h2>
+        
+        <p class="question">
+			6c61207265706f6e73652061c2a0206c276574617065203<br>6206573742022474c49544348222e20426f6e6e65206368<br>616e63652021<br><br> le mot de passe :
+        </p>
+        
+        <input type="text" id="reponseUser" placeholder="Votre réponse..." autocomplete="off">
+        <br>
+        <button onclick="verifierReponse()">Valider</button>
+        
+        <div id="msgErreur" class="error">
+            <p>ACCÈS REFUSÉ</p>
+        </div>
+
+        <div id="zoneAide" class="hidden">
+            <p>Le système détecte que vous galérez...</p>
+            <button id="btnIndice" onclick="afficherTexteIndice()">Afficher un indice (-1 point de respect)</button>
+            
+            <p id="texteIndice" class="hidden" style="color: yellow; margin-top: 10px;">
+                💡 <em>On dirait de l'hexadecimal... peut-etre qu'il existe de convertisseur hexadecimal -> texte sur internet ? </em>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        var nbErreurs = 0;
+        function verifierReponse() {
+            var saisie = document.getElementById("reponseUser").value;
+            saisie = saisie.toUpperCase().trim();
+            
+            var bonneReponse = "GLITCH"; 
+            var pageSuivante = "fin.html"; 
+
+            if (saisie === bonneReponse) {
+                window.location.href = pageSuivante;
+            } else {
+                document.getElementById("msgErreur").style.display = "block";
+                nbErreurs++;
+                if (nbErreurs >= 3) {
+                    document.getElementById("zoneAide").classList.remove("hidden");
+                }
+            }
+        }
+        function afficherTexteIndice() {
+            document.getElementById("texteIndice").classList.remove("hidden");
+            document.getElementById("btnIndice").style.display = "none";
+        }
+        document.getElementById("reponseUser").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                verifierReponse();
+            }
+        });
+    </script>
+</body>
+</html>
